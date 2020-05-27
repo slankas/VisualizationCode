@@ -127,3 +127,5 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+kaggle/output.json
+kaggle/output1.json
