@@ -1,7 +1,7 @@
 # Kaggle Data Science and Machine Learning Surveys
 This directory contains the data and a variety of notebooks from Kaggle's Data Science and Machine Learning Surveys in 2017, 2018, and 2019.
 
-All of these notebooks demonstrate Storytelling with Data using a variety of different charts. Some of these charts are extremely well-executed.  In other cases, the charts can be improved or a different chart type used.
+The included notebooks demonstrate explanatory data analysis using a variety of different charts. Some of these charts are extremely well-executed.  In other cases, the charts can be improved or a different chart type used.
 
 ## Datasets
 | Year | URL | License |
