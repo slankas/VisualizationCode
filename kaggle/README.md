@@ -16,8 +16,8 @@ All of these notebooks were released under the  [Apache 2.0 License](http://www.
 | Original Notebook | Execute in Google Colab |
 |-|-|
 | [Geek Girls Rising: Myth or Reality?](https://www.kaggle.com/parulpandey/geek-girls-rising-myth-or-reality) | [Open](http://colab.research.google.com/github/slankas/VisualizationCode/blob/master/geek-girls-rising-myth-or-reality.ipynb)  |
-| [Spending $$$ for MS in Data Science - Worth It?](https://www.kaggle.com/shivamb/spending-for-ms-in-data-science-worth-it) | [Open](http://colab.research.google.com/github/slankas/VisualizationCode/blob/master/.ipynb) |
-| [The Gender Divide in Data Science](https://www.kaggle.com/martinlbarron/the-gender-divide-in-data-science) | [Open](http://colab.research.google.com/github/slankas/VisualizationCode/blob/master/.ipynb) |
-| [What Makes a Kaggler Valuable](https://www.kaggle.com/andresionek/what-makes-a-kaggler-valuable) | [Open](http://colab.research.google.com/github/slankas/VisualizationCode/blob/master/.ipynb) |
-| [Where Do People Learn Machine Learning and Data Science](https://www.kaggle.com/sudalairajkumar/where-do-people-learn-ml-ds) | [Open](http://colab.research.google.com/github/slankas/VisualizationCode/blob/master/.ipynb) |
-| [Woogler - the Woman Kaggler](https://www.kaggle.com/farazrahman/woggler-the-women-kaggler) | [Open](http://colab.research.google.com/github/slankas/VisualizationCode/blob/master/.ipynb) |
+| [Spending $$$ for MS in Data Science - Worth It?](https://www.kaggle.com/shivamb/spending-for-ms-in-data-science-worth-it) | [Open](http://colab.research.google.com/github/slankas/VisualizationCode/blob/master/spending-for-ms-in-data-science-worth-it.ipynb) |
+| [The Gender Divide in Data Science](https://www.kaggle.com/martinlbarron/the-gender-divide-in-data-science) | [Open](http://colab.research.google.com/github/slankas/VisualizationCode/blob/master/the-gender-divide-in-data-science.ipynb) |
+| [What Makes a Kaggler Valuable](https://www.kaggle.com/andresionek/what-makes-a-kaggler-valuable) | [Open](http://colab.research.google.com/github/slankas/VisualizationCode/blob/master/what-makes-a-kaggler-valuable.ipynb) |
+| [Where Do People Learn Machine Learning and Data Science](https://www.kaggle.com/sudalairajkumar/where-do-people-learn-ml-ds) | [Open](http://colab.research.google.com/github/slankas/VisualizationCode/blob/master/where-do-people-learn-ml-ds.ipynb) |
+| [Woggler - the Woman Kaggler](https://www.kaggle.com/farazrahman/woggler-the-women-kaggler) | [Open](http://colab.research.google.com/github/slankas/VisualizationCode/blob/master/woggler-the-women-kaggler.ipynb) |
