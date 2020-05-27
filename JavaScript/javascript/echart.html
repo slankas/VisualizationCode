@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://d3js.org/d3.v5.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.7.0/echarts.js"></script>
+</head>
+
+<body onload="execute()">
+  <h1>Bar Chart</h1>
+  <div id="sampleBarChart" style="width:800px;height:500px;"></div>
+  <h1>Lines Chart</h1>
+  <div id="linesChart" style="width:1200px;height:500px;"></div>
+</body>
+<script>
+    var sampleBarChart = echarts.init( document.getElementById('sampleBarChart'));
+
+    var option = {
+                title: {
+                    text: 'Sample Bar Chart'
+                },
+                xAxis: {
+                    data: [1, 2, 3, 4, 5]
+                },
+                yAxis: {},
+                series: [{
+                    type: 'bar',
+                    data: [1, 2, 4, 8, 16]
+                }]
+            };
+
+    // use configuration item and data specified to show chart
+    sampleBarChart.setOption(option);
+
+    function csvToColumnArrays(csv) {
+      var mainObj = {},
+      header = Object.keys(csv[0]);
+      for (var i = 0; i < header.length; i++) { mainObj[header[i]]=[]; };
+      csv.map(function(d) { for (key in mainObj) { mainObj[key].push(d[key]) } });
+      return mainObj;
+    }
+
+    var data2014Top100;
+
+    function execute() {
+
+
+      // nesting of calls avoids asynchronous loading issues.  probably better ways now in JS
+      d3.csv("timesData2014Top100.csv").then( function(csv) {
+        data2014Top100 = csvToColumnArrays(csv);
+        createLineChart();
+      });
+    }
+
+  function createLineChart() {
+    var lineChart = echarts.init( document.getElementById('linesChart'));
+
+    var option = {
+                title: {
+                    text: 'Citation and Teaching vs World Rank of Top 100 Universities'
+                },
+                xAxis: {
+                    data: data2014Top100.world_rank,
+                    boundaryGap: false
+                },
+                legend: { orient: 'vertical',
+                                  data:['Citations', 'Teaching']
+                },
+                yAxis: { type: 'value'},
+                series: [{  name: 'Citations', type: 'line', data:  data2014Top100.citations   },
+                         {  name: 'Teaching', type: 'line', data:  data2014Top100.teaching, showSymbol: false   }
+                        ]
+            };
+
+    // use configuration item and data specified to show chart
+    lineChart.setOption(option);
+  }
+
+
+
+</script>
+</html>

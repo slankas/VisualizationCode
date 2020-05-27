@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://d3js.org/d3.v5.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+
+<body onload="execute()">
+  <h1>Quick Sample Bar Chart</h1>
+  <div id="sampleBarChart" style="width:600px;height:500px;"></div>
+  <h1>Lines Chart</h1>
+  <div id="linesChart" style="width:1200px;height:500px;"></div>
+  <h1>Scatter Chart</h1>
+  <div id="scatterChart" style="width:1200px;height:500px;"></div>
+  <h1>Bar Chart</h1>
+  <div id="barChart" style="width:1200px;height:500px;"></div>
+  <h1>Stacked Bar Chart</h1>
+  <div id="stackedBarChart" style="width:1200px;height:500px;"></div>
+</body>
+<script>
+    var sampleBarChart = document.getElementById('sampleBarChart');
+    var layout = {
+          title: {
+            text:'Plot Title',
+            font: {
+              family: 'Courier New, monospace',
+              size: 24
+            },
+            xref: 'paper',
+            x: 0.05,
+          },
+          xaxis: {
+            title: {
+              text: 'x Axis',
+              font: {
+                family: 'Courier New, monospace',
+                size: 18,
+                color: '#7f7f7f'
+              }
+            },
+          },
+          yaxis: {
+            title: {
+              text: 'y Axis',
+              font: {
+                family: 'Courier New, monospace',
+                size: 18,
+                color: '#7f7f7f'
+              }
+            }
+          },
+          margin: {
+                l: 60,
+                r: 0,
+                b: 50,
+                t: 50,
+                pad: 10
+  }
+        }
+
+    Plotly.newPlot( sampleBarChart, [{"type": "bar",
+      x: [1, 2, 3, 4, 5],
+      y: [1, 2, 4, 8, 16] }], layout  );
+
+    function csvToColumnArrays(csv) {
+      var mainObj = {},
+      header = Object.keys(csv[0]);
+      for (var i = 0; i < header.length; i++) { mainObj[header[i]]=[]; };
+      csv.map(function(d) { for (key in mainObj) { mainObj[key].push(d[key]) } });
+      return mainObj;
+    }
+
+    var data2014Top100;
+    var data2015Top100;
+    var data2016Top100;
+    var data2014Top3;
+  function execute() {
+
+
+    // nesting of calls avoids asynchronous loading issues.  probably better ways now in JS
+    d3.csv("timesData2014Top100.csv").then( function(csv) {
+      data2014Top100 = csvToColumnArrays(csv);
+      d3.csv("timesData2015Top100.csv").then( function(csv) {
+        data2015Top100 = csvToColumnArrays(csv);
+        d3.csv("timesData2016Top100.csv").then( function(csv) {
+          data2016Top100 = csvToColumnArrays(csv);
+          d3.csv("timesData2014Top3.csv").then( function(csv)   {
+            data2014Top3   = csvToColumnArrays(csv);
+            createLineChart();
+            createScatterChart();
+            createBarChart();
+            createStackedBarChart();
+          });
+        });
+      });
+    });
+  }
+
+  function createLineChart() {
+    var linesChart = document.getElementById('linesChart');
+    var layout = {
+          title: {
+            text:'Citation and Teaching vs World Rank of Top 100 Universities',
+            xref: 'paper',
+            x: 0.00,
+          },
+          xaxis: {
+            title: {
+              text: 'World Rank',
+            },
+          },
+        }
+
+    var trace1 = {
+          x: data2014Top100.world_rank,
+          y: data2014Top100.citations,
+          text: data2014Top100.university_name,
+          mode: "lines",
+          name: "Citations"
+        };
+
+    var trace2 = {
+      x: data2014Top100.world_rank,
+      y: data2014Top100.teaching,
+      text: data2014Top100.university_name,
+      mode: "lines+markers",
+      name: "Teaching"
+    };
+
+    var data = [trace1, trace2];
+
+    Plotly.newPlot( linesChart, data, layout  );
+  }
+
+
+  function createScatterChart() {
+    var linesChart = document.getElementById('scatterChart');
+    var layout = {
+          title: {
+            text:'Citation vs World Rank of Top 100 Universities with 2014, 2015, and 2016 Years',
+            xref: 'paper',
+            x: 0.00,
+          },
+          xaxis: {
+            title: {
+              text: 'World Rank',
+            },
+          },
+        }
+
+    var trace1 = {
+          x: data2014Top100.world_rank,
+          y: data2014Top100.citations,
+          text: data2014Top100.university_name,
+          mode: "markers",
+          name: "2014"
+    };
+
+    var trace2 = {
+          x: data2015Top100.world_rank,
+          y: data2015Top100.citations,
+          text: data2015Top100.university_name,
+          mode: "markers",
+          name: "2015"
+    };
+
+    var trace3 = {
+          x: data2016Top100.world_rank,
+          y: data2016Top100.citations,
+          text: data2016Top100.university_name,
+          mode: "markers",
+          name: "2016"
+    };
+
+    var data = [trace1, trace2, trace3];
+
+    Plotly.newPlot( linesChart, data, layout  );
+  }
+
+  function createBarChart() {
+    var barChart = document.getElementById('barChart');
+    var layout = {
+          title: {
+            text:' Top 3 Universities for Citations and Teaching',
+            xref: 'paper',
+            x: 0.00,
+          },
+          yaxis: {
+            title: {
+              text: 'Rank',
+            },
+          },
+        }
+
+    var trace1 = {
+          x: data2014Top3.university_name,
+          y: data2014Top3.citations,
+          text: data2014Top3.country,
+          type: "bar",
+          name: "Citations"
+        };
+
+    var trace2 = {
+          x: data2014Top3.university_name,
+          y: data2014Top3.teaching,
+          text: data2014Top3.country,
+          type: "bar",
+          name: "Teaching"
+        };
+
+    var data = [trace1, trace2];
+
+    Plotly.newPlot( barChart, data, layout  );
+  }
+
+  function  createStackedBarChart() {
+    var barChart = document.getElementById('stackedBarChart');
+    var layout = {
+          barmode: 'relative',
+          title: {
+            text:' Top 3 Universities for Citations and Teaching',
+            xref: 'paper',
+            x: 0.00,
+          },
+          yaxis: {
+            title: {
+              text: 'Rank',
+            },
+          },
+        }
+
+    var trace1 = {
+          x: data2014Top3.university_name,
+          y: data2014Top3.citations,
+          text: data2014Top3.country,
+          type: "bar",
+          name: "Citations"
+        };
+
+    var trace2 = {
+          x: data2014Top3.university_name,
+          y: data2014Top3.teaching,
+          text: data2014Top3.country,
+          type: "bar",
+          name: "Teaching"
+        };
+
+    var data = [trace1, trace2];
+
+    Plotly.newPlot( barChart, data, layout  );
+  }
+
+
+</script>
+</html>

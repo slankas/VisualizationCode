@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head><script src="https://d3js.org/d3.v5.js"></script></head>
+<body onload="performScaleExample()">
+</body>
+<script>
+function performScaleExample() {
+  var numbers = [10,25,39,47,71,82,160,175 ];
+
+  var x = d3.scaleLinear().domain([0, d3.max(numbers)])
+                           .range([0, 599]);
+
+  var testData = [0,175/2,160,175,350]
+  d3.select( "body" )
+        .append( "ul" ).selectAll( "li" )
+        .data(testData).enter()
+        .append("li").text(d => x(d) + " : " + x.invert(x(d)))
+
+  var so = d3.scaleOrdinal().domain([ "alpha", "bravo", "charlie", "delta"] ).range([1,2,3,4,5,6])
+  var ordinalData = ["alpha", "golf", "delta", "foxtrot", "romeo", "sierra","tango", "sierra"]
+  d3.select( "body" )
+        .append( "ul" ).selectAll( "li" )
+        .data(ordinalData).enter()
+        .append("li").text(d => d + " : " + so(d))
+}
+</script>
+</html>
