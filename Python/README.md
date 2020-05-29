@@ -1,6 +1,6 @@
-# Python Visualization notebooks
+# Python Visualization Notebooks
 
-
+You can run these Python notebooks through either Google's Colaboratory environment or by downloading the notebook files and associated data files to an Jupyter environment that supports Python 3.  Required libraries are defined in requirements.txt file of the parent directory.
 
 | Notebook| Description | Execute in Google Colab |
 |-|-|-|
