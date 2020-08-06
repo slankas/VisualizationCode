@@ -2,7 +2,7 @@
 
 ## Libraries
 
-- [plotly](https://jsfiddle.net/slankas/mkz1drxv/2/) [Plotly Home](https://plotly.com/javascript/)
+- [plotly](https://jsfiddle.net/slankas/mkz1drxv/2/) [Plotly Home](https://plotly.com/javascript/)   [Event Handling](https://plotly.com/javascript/plotlyjs-events/)
 - [eCharts](https://jsfiddle.net/slankas/37u0xps1/1/) [eCharts Home](https://echarts.apache.org/en/index.html)
 
 ## D3.js
